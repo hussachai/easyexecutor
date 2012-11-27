@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE easy-executor SYSTEM "easyexecutor.dtd">
+<easy-executor single-instance="true" locale="th_TH">	
+	
+	<import location="classpath:foo-config.xml"/>
+	
+	<system-properties location="classpath:system.properties">
+		<property key="siberhus.message" value="More important message"/>
+		<property key="siberhus.owner" value="Hussachai Puripunpinyo"/>
+	</system-properties>
+	
+	<user-properties name="bar" extends="foo">
+		<property key="name" value="Bar"/>
+	</user-properties>
+	
+	<user-properties name="foobar">
+		<property key="name" value="FooBar"/>
+	</user-properties>
+	
+	<classpath>
+		<!--
+		<classes path=""></classes>
+		 -->
+		<lib path="lib"></lib>
+	</classpath>
+	
+	<application id="bar-app" mode="test">
+		<name>Bar Application</name>
+		<version>0.1</version>
+		<description>
+			Trivial Description
+		</description>
+		
+		<logger impl="log4j" config="classpath:log4j.properties"/>
+		<cron expression="* * * * *"/>
+		<beans>
+			<bean id="foobar" class="com.siberhus.easyexecutor.test.FooBarBean">
+				<method name="doSomethingWithParams">
+					<arg type="java.lang.Integer" value="${1}"/>
+					<arg type="java.lang.Integer" value="${2}"/>
+					<arg type="java.util.Date" value="${3}"/>
+					<arg type="java.lang.String" value="Hello"/>
+				</method>
+			</bean>
+		</beans>
+		<!-- if method attribute is not specified, main method will be used instead -->
+	</application>
+	
+</easy-executor>
+
+<!--
+	Next release:
+		- Support native parameter binding 
+ -->

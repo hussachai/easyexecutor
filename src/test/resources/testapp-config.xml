@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE easy-executor SYSTEM "easyexecutor.dtd">
+<easy-executor single-instance="false" locale="en_US">	
+	
+	<application id="foo-app" mode="test">
+		<name>Test Application</name>
+		<version>0.1</version>
+		<description>
+			Trivial Description
+		</description>
+		<beans>
+			<bean id="foobar.doSomething" class="com.siberhus.easyexecutor.test.FooBarBean">
+				<method name="doSomething"/>
+			</bean>
+		</beans>
+	</application>
+</easy-executor>
+

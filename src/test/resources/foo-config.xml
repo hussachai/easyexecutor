@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE easy-executor SYSTEM "easyexecutor.dtd">
+<easy-executor single-instance="true" locale="en_US">	
+	
+	<user-properties name="foo" location="classpath:foo.properties"/>
+	<classpath>
+		<classes path="directory1"></classes>
+		<classes path="directory2"></classes>
+		<lib path="directory3"></lib>
+	</classpath>
+	<application id="foo-app" mode="test">
+		<name>Foo Application</name>
+		<version>0.1</version>
+		<description>
+			Trivial Description
+		</description>
+		<beans>
+			<bean id="foobar" class="com.siberhus.easyexecutor.test.FooBarBean" />
+		</beans>
+		<!-- if method attribute is not specified, main method will be used instead -->
+	</application>
+</easy-executor>
+

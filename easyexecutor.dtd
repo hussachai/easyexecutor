@@ -1,0 +1,55 @@
+
+<!ELEMENT easy-executor (import*, system-properties?, user-properties*,classpath?, application?) >
+<!ATTLIST easy-executor single-instance (true|false) #IMPLIED>
+<!ATTLIST easy-executor locale NMTOKEN #IMPLIED>
+
+<!ELEMENT import EMPTY>
+<!ATTLIST import location CDATA #REQUIRED>
+
+<!ELEMENT property (#PCDATA) >
+<!ATTLIST property key CDATA #REQUIRED>
+<!ATTLIST property value CDATA #IMPLIED>
+
+<!ELEMENT system-properties (property*) >
+<!ATTLIST system-properties location CDATA #IMPLIED>
+
+<!ELEMENT user-properties (property*) >
+<!ATTLIST user-properties name NMTOKEN #REQUIRED>
+<!ATTLIST user-properties location CDATA #IMPLIED>
+<!ATTLIST user-properties extends NMTOKEN #IMPLIED>
+
+<!ELEMENT classpath (classes*, lib*) >
+<!ELEMENT classes (#PCDATA) >
+<!ATTLIST classes path CDATA #REQUIRED>
+<!ELEMENT lib (#PCDATA) >
+<!ATTLIST lib path CDATA #REQUIRED>
+
+<!ELEMENT application (name?, version?, description?, logger?,cron?, beans) >
+<!ATTLIST application id NMTOKEN #REQUIRED>
+<!ATTLIST application mode NMTOKEN #IMPLIED>
+
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT version (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+
+<!ELEMENT logger EMPTY>
+<!ATTLIST logger impl (log4j|jdk ) "log4j">
+<!ATTLIST logger config CDATA #REQUIRED>
+
+<!ELEMENT cron EMPTY>
+<!ATTLIST cron expression CDATA #REQUIRED>
+
+<!ELEMENT beans (bean+) >
+
+<!ELEMENT bean (method*) >
+<!ATTLIST bean class CDATA #REQUIRED>
+<!ATTLIST bean id ID #REQUIRED>
+
+<!ELEMENT method (arg*) >
+<!ATTLIST method name NMTOKEN #REQUIRED>
+
+<!ELEMENT arg (#PCDATA) >
+<!ATTLIST arg type NMTOKEN #REQUIRED>
+<!ATTLIST arg value CDATA #IMPLIED>
+
+
